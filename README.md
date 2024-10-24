@@ -58,6 +58,7 @@ Copiar código
 
 ├── prim.py        # Script principal contendo o algoritmo de Prim
 ├── grafo1.txt     # Exemplo de arquivo de entrada
+├── LICENSE.md     # Licensa do MIT
 └── README.md      # Este arquivo
 
 ## 🛠️ Explicação do Código
