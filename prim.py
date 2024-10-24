@@ -29,17 +29,21 @@ def prim(n, n_out):
     custo_tot = 0 # Custo total
     arv_ger_mim = [] # Árvore geradora mínima
 
+    print(f"\nIniciando o algoritmo a partir da raiz: {raiz}\n")
+
     while n_edge < n - 1: # Enquanto não tiver n - 1 arestas
         while True: # Enquanto não encontrar uma aresta válida
             c, a, b = heapq.heappop(H) # Remove a aresta de menor custo
             if not marcados[b]: # Se o vértice b não foi marcado
                 break # Sai do loop
+        # Aresta analisada
+        print(f"\nAnalisando aresta: {a} --({c})--> {b}")
+        print("Vértices marcados: ", ["X" if marcados[i] else str(i) for i in range(n)])
 
-        print(a,b) # Imprime a aresta que está sendo analisada
-        print("###### marcados ######\n" + str(marcados) + "\n") # Imprime os vértices marcados
 
         marcados[b] = True # Marca o vértice b
         custo_tot += c # Incrementa o custo total
+    print("\n###### RESULTADOS ######")
         arv_ger_mim.append((a, b)) # Adiciona a aresta na árvore geradora mínima
         n_edge += 1 # Incrementa o número de arestas
 
@@ -48,8 +52,14 @@ def prim(n, n_out):
                 heapq.heappush(H, (c, b, x)) # Adiciona a aresta na heap
 
 
-    print("###### Custo Total ######\n" + str(custo_tot) + "\n")  # Imprime o custo total
-    print("###### Árvore Geradora Mínima ######\n" + str(arv_ger_mim) + "\n") # Imprime a árvore geradora mínima
+    # Exibe o custo total e a árvore geradora mínima de forma formatada
+    print(f"Custo Total da Árvore Geradora Mínima: {custo_tot}\n")
+    
+    print("Arestas da Árvore Geradora Mínima:")
+    for a, b in arv_ger_mim:
+        print(f" - {a} -- {b}")
+    
+    print("\n###### FIM DOS RESULTADOS ######\n")
 
 print("Digite o nome do arquivo de entrada:") # Pede o nome do arquivo de entrada
 filename = input()  
