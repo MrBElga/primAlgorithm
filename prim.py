@@ -30,7 +30,7 @@ def prim(n, n_out):
     arv_ger_mim = [] 
 
     print(f"\nIniciando o algoritmo a partir da raiz: {raiz}\n")
-
+    cont = 0
     while n_edge < n - 1: 
         while True: 
             c, a, b = heapq.heappop(H) 
@@ -43,7 +43,8 @@ def prim(n, n_out):
 
         marcados[b] = True 
         custo_tot += c 
-        print("\n###### RESULTADOS ######")
+        print(f"\n###### RESULTADOS ({cont}) ######")
+        cont +=1 
         arv_ger_mim.append((a, b))
         n_edge += 1 
 
@@ -51,7 +52,9 @@ def prim(n, n_out):
             if not marcados[x]: 
                 heapq.heappush(H, (c, b, x)) 
 
-    print(f"Custo Total da Árvore Geradora Mínima: {custo_tot}\n")
+        print("\n### HEAP ###")
+        print(H)
+    print(f"\nCusto Total da Árvore Geradora Mínima: {custo_tot}\n")
     
     print("Arestas da Árvore Geradora Mínima:")
     for a, b in arv_ger_mim:
