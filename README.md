@@ -19,7 +19,14 @@ O **Algoritmo de Prim** é um método guloso utilizado para encontrar a árvore 
 ### 📥 Exemplo de Entrada
 
 Arquivo `grafo1.txt`:
-5 7 0 1 2 0 3 6 1 2 3 1 3 8 1 4 5 2 4 7 3 4 9
+5 7 
+0 1 2 
+0 3 6 
+1 2 3 
+1 3 8 
+1 4 5 
+2 4 7 
+3 4 9
 
 shell
 Copiar código
