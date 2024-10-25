@@ -3,17 +3,34 @@ import random
 
 def ler_arquivo(filename):
     with open(filename, 'r') as file:
-        linhas = file.readlines() 
-    
-    n, m = map(int, linhas[0].split()) 
-    n_out = [[] for _ in range(n)]
-    
-    for linha in linhas[1:]: 
-        a, b, c = map(int, linha.split()) 
-        n_out[a].append((b, c)) 
-        n_out[b].append((a, c)) 
- 
-    return n, n_out
+        linhas = file.readlines()
+
+    #
+    primeira_linha = linhas[0].strip()
+    if primeira_linha[0].isalpha():  
+   
+        matriz_adjacencia = []
+        for linha in linhas[1:]: 
+            matriz_adjacencia.append(list(map(int, linha.split())))
+
+        n = len(matriz_adjacencia)
+        adj_list = [[] for _ in range(n)]
+        for i in range(n):
+            for j in range(n):
+                if matriz_adjacencia[i][j] != 0:
+                    adj_list[i].append((j, matriz_adjacencia[i][j]))
+
+        return n, adj_list
+    else:
+
+        n, m = map(int, primeira_linha.split()) 
+        adj_list = [[] for _ in range(n)]
+        for linha in linhas[1:]:
+            origem, destino, custo = map(int, linha.split())
+            adj_list[origem].append((destino, custo))
+            adj_list[destino].append((origem, custo))  
+
+        return n, adj_list
 
 def prim(n, n_out):
     raiz = random.randint(0, n - 1)
